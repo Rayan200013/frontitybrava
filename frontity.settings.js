@@ -2,7 +2,7 @@ const settings = {
   "name": "frontity-brava",
   "state": {
     "frontity": {
-      "url": "https://test.frontity.org",
+      "url": "https://frontity.bravastudio.net/",
       "title": "Test Frontity Blog",
       "description": "WordPress installation for Frontity development"
     }
@@ -45,7 +45,7 @@ const settings = {
       "name": "@frontity/wp-source",
       "state": {
         "source": {
-          "url": "https://test.frontity.org"
+          "url": "https://frontity.bravastudio.net/"
         }
       }
     },
