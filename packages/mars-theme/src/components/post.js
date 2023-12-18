@@ -139,8 +139,8 @@ const Content = styled.div`
   }
 
   img {
-    width: 100%;
-    object-fit: cover;
+    width: 90%;
+    object-fit: contain;
     object-position: center;
   }
 
