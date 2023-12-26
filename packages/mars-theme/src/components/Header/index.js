@@ -1,7 +1,7 @@
 import { connect, styled } from "frontity";
-import Link from "./link";
-import Nav from "./nav";
-import MobileMenu from "./menu";
+import Link from "../link";
+import Nav from "../nav";
+import MobileMenu from "../menu";
 
 const Header = ({ state }) => {
   return (
@@ -22,10 +22,9 @@ const Header = ({ state }) => {
 export default connect(Header);
 
 const Container = styled.div`
-  
   max-width: 100%;
   box-sizing: border-box;
-  padding: ;
+  padding: 0;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -34,7 +33,6 @@ const Container = styled.div`
 
 const Title = styled.h2`
   margin: 0;
-
 `;
 
 const Description = styled.h4`

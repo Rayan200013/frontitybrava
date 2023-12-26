@@ -1,13 +1,37 @@
 import React from "react";
 import { connect, styled } from "frontity";
 import Link from "./link";
+// import {
+//   AppBar,
+//   Toolbar,
+//   Typography,
+//   Button,
+//   IconButton,
+//   Menu,
+//   MenuItem,
+// } from "@material-ui/core";
+// import MenuIcon from "@material-ui/icons/Menu";
+// import { makeStyles } from "@material-ui/core/styles";
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     flexGrow: 1,
+//   },
+//   menuButton: {
+//     marginRight: theme.spacing(2),
+//   },
+//   title: {
+//     flexGrow: 1,
+//   },
+//   donateButton: {
+//     marginRight: theme.spacing(2),
+//   },
+// }));
 
 /**
  * Navigation Component
  *
  * It renders the navigation links
  */
-
 
 /**
  * One level menu (no child menus)
@@ -32,38 +56,94 @@ import Link from "./link";
  * Two level menu (with one level of child menus)
  */
 const Nav = ({ state }) => {
+  // const classes = useStyles();
+  // const [anchorEl, setAnchorEl] = React.useState(null);
+
+  // const handleClick = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
+
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };
   const items = state.source.get(`/menu/${state.theme.menuUrl}/`).items;
   // console.log('ITEMS:',items)
   return (
-    <NavContainer>
-      {items.map((item) => {
-        if (!item.child_items) {
-          return (
-            <NavItem key={item.ID}>
-              <Link link={item.url}>{item.title}</Link>
-            </NavItem>
-          );
-        } else {
-          const childItems = item.child_items;
-          return (
-            <NavItemWithChild key={item.ID}>
-              <NavItem>
+    <>
+      <NavContainer>
+        {items.map((item) => {
+          if (!item.child_items) {
+            return (
+              <NavItem key={item.ID}>
                 <Link link={item.url}>{item.title}</Link>
               </NavItem>
-              <ChildMenu>
-                {childItems.map((childItem) => {
-                  return (
-                    <NavItem key={childItem.ID}>
-                      <Link link={childItem.url}>{childItem.title}</Link>
-                    </NavItem>
-                  );
-                })}
-              </ChildMenu>
-            </NavItemWithChild>
-          );
-        }
-      })}
-    </NavContainer>
+            );
+          } else {
+            const childItems = item.child_items;
+            return (
+              <NavItemWithChild key={item.ID}>
+                <NavItem>
+                  <Link link={item.url}>{item.title}</Link>
+                </NavItem>
+                <ChildMenu>
+                  {childItems.map((childItem) => {
+                    return (
+                      <NavItem key={childItem.ID}>
+                        <Link link={childItem.url}>{childItem.title}</Link>
+                      </NavItem>
+                    );
+                  })}
+                </ChildMenu>
+              </NavItemWithChild>
+            );
+          }
+        })}
+      </NavContainer>
+
+      {/* <div className={classes.root}>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              edge="start"
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="menu"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleClick}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorEl}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose}>Home</MenuItem>
+              <MenuItem onClick={handleClose}>About</MenuItem>
+              <MenuItem onClick={handleClose}>News</MenuItem>
+              <MenuItem onClick={handleClose}>Contact us</MenuItem>
+            </Menu>
+            <Typography variant="h6" className={classes.title}>
+              Logo
+            </Typography>
+            <Button color="inherit" className={classes.donateButton}>
+              Donate
+            </Button>
+          </Toolbar>
+        </AppBar>
+      </div> */}
+    </>
   );
 };
 
@@ -92,7 +172,6 @@ export default connect(Nav);
 const NavContainer = styled.nav`
   list-style: none;
   display: flex;
-  
   max-width: 100%;
   box-sizing: border-box;
   padding: 0 24px;
@@ -122,9 +201,8 @@ const NavItem = styled.div`
     &[aria-current="page"] {
       border-bottom-color: #fff;
     }
-
   }
-  & > a:hover{
+  & > a:hover {
     text-decoration: underline;
     font-weight: 700;
   }
@@ -155,3 +233,5 @@ const ChildMenu = styled.div`
   width: 100%;
   z-index: 1;
 `;
+
+// export { NavContainer, NavItem, NavItemWithChild, ChildMenu };

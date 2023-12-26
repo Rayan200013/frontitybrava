@@ -1,6 +1,7 @@
 import { connect, styled, decode } from "frontity";
 import Item from "./list-item";
 import Pagination from "./pagination";
+import { Header } from "../Header";
 
 const List = ({ state }) => {
   // Get the data of the current list.
@@ -43,8 +44,8 @@ const Container = styled.section`
   list-style: none;
 `;
 
-const Header = styled.h3`
-  font-weight: 300;
-  text-transform: capitalize;
-  color: rgba(12, 17, 43, 0.9);
-`;
+// const Header = styled.h3`
+//   font-weight: 300;
+//   text-transform: capitalize;
+//   color: rgba(12, 17, 43, 0.9);
+// `;
