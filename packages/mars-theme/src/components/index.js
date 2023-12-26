@@ -6,6 +6,7 @@ import Post from "./post";
 import Loading from "./loading";
 import Title from "./title";
 import PageError from "./page-error";
+import {Main, HeadContainer} from "./style";
 
 /**
  * Theme is the root React component of our theme. The one we will export
@@ -46,6 +47,7 @@ const Theme = ({ state }) => {
           <Post when={data.isPostType} />
           <PageError when={data.isError} />
         </Switch>
+
       </Main>
     </>
   );
@@ -63,22 +65,10 @@ const globalStyles = css`
   a:visited {
     color: inherit;
     text-decoration: none;
+    
   }
+
 `;
 
-const HeadContainer = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  background-color: #1f38c5;
-`;
 
-const Main = styled.div`
-  display: flex;
-  justify-content: center;
-  background-image: linear-gradient(
-    180deg,
-    rgba(66, 174, 228, 0.1),
-    rgba(66, 174, 228, 0)
-  );
-`;
+

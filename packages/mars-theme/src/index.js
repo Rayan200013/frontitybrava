@@ -42,9 +42,13 @@ const marsTheme = {
       closeMobileMenu: ({ state }) => {
         state.theme.isMobileMenuOpen = false;
       },
+      // beforeSSR: async ({ actions }) => {
+      //   await actions.source.fetch("/contact");
+      // },
       beforeSSR: async ({ state, actions }) => {
         await actions.source.fetch(`/menu/${state.theme.menuUrl}/`);
       },
+      
     },
   },
   libraries: {

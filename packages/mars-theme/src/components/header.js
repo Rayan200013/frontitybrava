@@ -10,7 +10,7 @@ const Header = ({ state }) => {
         <StyledLink link="/">
           <Title>{state.frontity.title}</Title>
         </StyledLink>
-        <Description>{state.frontity.description}</Description>
+        {/* <Description>{state.frontity.description}</Description> */}
         <MobileMenu />
       </Container>
       <Nav />
@@ -22,10 +22,10 @@ const Header = ({ state }) => {
 export default connect(Header);
 
 const Container = styled.div`
-  width: 848px;
+  
   max-width: 100%;
   box-sizing: border-box;
-  padding: 24px;
+  padding: ;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -34,7 +34,7 @@ const Container = styled.div`
 
 const Title = styled.h2`
   margin: 0;
-  margin-bottom: 16px;
+
 `;
 
 const Description = styled.h4`

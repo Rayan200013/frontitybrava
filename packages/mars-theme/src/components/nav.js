@@ -92,7 +92,7 @@ export default connect(Nav);
 const NavContainer = styled.nav`
   list-style: none;
   display: flex;
-  width: 848px;
+  
   max-width: 100%;
   box-sizing: border-box;
   padding: 0 24px;
@@ -122,6 +122,11 @@ const NavItem = styled.div`
     &[aria-current="page"] {
       border-bottom-color: #fff;
     }
+
+  }
+  & > a:hover{
+    text-decoration: underline;
+    font-weight: 700;
   }
 
   &:first-of-type {
