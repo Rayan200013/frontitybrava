@@ -1,12 +1,12 @@
 import { Global, css, connect, styled, Head } from "frontity";
 import Switch from "@frontity/components/switch";
-import Header from "./header";
+// import Header from "./header";
 import List from "./list";
 import Post from "./post";
 import Loading from "./loading";
 import Title from "./title";
 import PageError from "./page-error";
-import {Main, HeadContainer} from "./style";
+import { Main, HeadContainer } from "./style";
 import App from "./carousel";
 /**
  * Theme is the root React component of our theme. The one we will export
@@ -46,7 +46,6 @@ const Theme = ({ state }) => {
           <Post when={data.isPostType} />
           <PageError when={data.isError} />
         </Switch>
-       
       </Main>
       <App />
     </>
@@ -67,10 +66,5 @@ const globalStyles = css`
   a:visited {
     color: inherit;
     text-decoration: none;
-    
   }
-
 `;
-
-
-
