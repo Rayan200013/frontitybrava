@@ -1,31 +1,31 @@
 import React from "react";
 import { connect, styled } from "frontity";
 import Link from "./link";
-// import {
-//   AppBar,
-//   Toolbar,
-//   Typography,
-//   Button,
-//   IconButton,
-//   Menu,
-//   MenuItem,
-// } from "@material-ui/core";
-// import MenuIcon from "@material-ui/icons/Menu";
-// import { makeStyles } from "@material-ui/core/styles";
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     flexGrow: 1,
-//   },
-//   menuButton: {
-//     marginRight: theme.spacing(2),
-//   },
-//   title: {
-//     flexGrow: 1,
-//   },
-//   donateButton: {
-//     marginRight: theme.spacing(2),
-//   },
-// }));
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  IconButton,
+  Menu,
+  MenuItem,
+} from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
+import { makeStyles } from "@material-ui/core/styles";
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
+  donateButton: {
+    marginRight: theme.spacing(2),
+  },
+}));
 
 /**
  * Navigation Component
@@ -56,21 +56,21 @@ import Link from "./link";
  * Two level menu (with one level of child menus)
  */
 const Nav = ({ state }) => {
-  // const classes = useStyles();
-  // const [anchorEl, setAnchorEl] = React.useState(null);
+  const classes = useStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
-  // const handleClick = (event) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
 
-  // const handleClose = () => {
-  //   setAnchorEl(null);
-  // };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   const items = state.source.get(`/menu/${state.theme.menuUrl}/`).items;
   // console.log('ITEMS:',items)
   return (
     <>
-      <NavContainer>
+      {/* <NavContainer>
         {items.map((item) => {
           if (!item.child_items) {
             return (
@@ -98,10 +98,10 @@ const Nav = ({ state }) => {
             );
           }
         })}
-      </NavContainer>
+      </NavContainer> */}
 
-      {/* <div className={classes.root}>
-        <AppBar position="static">
+      <div className={classes.root}>
+        <AppBar>
           <Toolbar>
             <IconButton
               edge="start"
@@ -129,50 +129,33 @@ const Nav = ({ state }) => {
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}>Home</MenuItem>
-              <MenuItem onClick={handleClose}>About</MenuItem>
-              <MenuItem onClick={handleClose}>News</MenuItem>
-              <MenuItem onClick={handleClose}>Contact us</MenuItem>
+              {items.map((item) => (
+                <MenuItem key={item.ID} onClick={handleClose}>
+                  <Link link={item.url}>{item.title}</Link>
+                </MenuItem>
+              ))}
             </Menu>
             <Typography variant="h6" className={classes.title}>
-              Logo
+              <StyledLink link="/">
+                <Title>{state.frontity.title}</Title>
+              </StyledLink>
             </Typography>
             <Button color="inherit" className={classes.donateButton}>
               Donate
             </Button>
           </Toolbar>
         </AppBar>
-      </div> */}
+      </div>
     </>
   );
 };
-
-/**
- * Legacy mars-theme function
- */
-// const Nav = ({ state }) => (
-//   <NavContainer>
-//     {state.theme.menu.map(([name, link]) => {
-//       // Check if the link matched the current page url
-//       const isCurrentPage = state.router.link === link;
-//       return (
-//         <NavItem key={name}>
-//           {/* If link url is the current page, add `aria-current` for a11y */}
-//           <Link link={link} aria-current={isCurrentPage ? "page" : undefined}>
-//             {name}
-//           </Link>
-//         </NavItem>
-//       );
-//     })}
-//   </NavContainer>
-// );
 
 export default connect(Nav);
 
 const NavContainer = styled.nav`
   list-style: none;
   display: flex;
-  max-width: 100%;
+
   box-sizing: border-box;
   padding: 0 24px;
   margin: 0;
@@ -232,6 +215,14 @@ const ChildMenu = styled.div`
   background-color: lightblue;
   width: 100%;
   z-index: 1;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
+
+const Title = styled.h2`
+  margin: 0;
 `;
 
 // export { NavContainer, NavItem, NavItemWithChild, ChildMenu };

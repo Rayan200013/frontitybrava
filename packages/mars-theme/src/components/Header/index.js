@@ -6,13 +6,12 @@ import MobileMenu from "../menu";
 const Header = ({ state }) => {
   return (
     <>
-      <Container>
+      {/* <Container>
         <StyledLink link="/">
           <Title>{state.frontity.title}</Title>
         </StyledLink>
-        {/* <Description>{state.frontity.description}</Description> */}
         <MobileMenu />
-      </Container>
+      </Container> */}
       <Nav />
     </>
   );

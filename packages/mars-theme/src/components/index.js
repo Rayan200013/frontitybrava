@@ -35,9 +35,8 @@ const Theme = ({ state }) => {
       <Global styles={globalStyles} />
 
       {/* Add the header of the site. */}
-      <HeadContainer>
-        <Header />
-      </HeadContainer>
+
+      <Header />
 
       {/* Add the main section. It renders a different component depending
       on the type of URL we are in. */}
@@ -58,6 +57,8 @@ export default connect(Theme);
 const globalStyles = css`
   body {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
       "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
