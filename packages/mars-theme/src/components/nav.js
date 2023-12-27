@@ -9,23 +9,11 @@ import {
   IconButton,
   Menu,
   MenuItem,
+  Container,
+  Box,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import { makeStyles } from "@material-ui/core/styles";
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-  donateButton: {
-    marginRight: theme.spacing(2),
-  },
-}));
+import logoIcon from "../assets/frontity-logo.svg";
 
 /**
  * Navigation Component
@@ -56,15 +44,14 @@ const useStyles = makeStyles((theme) => ({
  * Two level menu (with one level of child menus)
  */
 const Nav = ({ state }) => {
-  const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
   };
   const items = state.source.get(`/menu/${state.theme.menuUrl}/`).items;
   // console.log('ITEMS:',items)
@@ -100,7 +87,7 @@ const Nav = ({ state }) => {
         })}
       </NavContainer> */}
 
-      <div className={classes.root}>
+      {/* <div className={classes.root}>
         <AppBar>
           <Toolbar>
             <IconButton
@@ -145,7 +132,103 @@ const Nav = ({ state }) => {
             </Button>
           </Toolbar>
         </AppBar>
-      </div>
+      </div> */}
+
+      <AppBar>
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+            <StyledLink link="/">
+              <img
+                src={logoIcon}
+                sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+              />
+            </StyledLink>
+            {/* <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
+              }}
+            >
+              {state.frontity.title}
+            </Typography> */}
+
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "flex", md: "none" },
+                justifyContent: "flex-end",
+              }}
+            >
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: "block", md: "none" },
+                  float: 0,
+                }}
+                className="hello-ab"
+              >
+                {items.map((item) => (
+                  <MenuItem key={item.ID} onClick={handleCloseNavMenu}>
+                    <Link link={item.url}>{item.title}</Link>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+
+            {/* Display menu items as buttons for larger screens */}
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", md: "flex" },
+                justifyContent: "flex-end",
+              }}
+            >
+              {items.map((item) => (
+                <Button
+                  key={item.ID}
+                  component={Link}
+                  link={item.url}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                >
+                  {item.title}
+                </Button>
+              ))}
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
     </>
   );
 };
@@ -155,7 +238,7 @@ export default connect(Nav);
 const NavContainer = styled.nav`
   list-style: none;
   display: flex;
-
+  max-width: 100%;
   box-sizing: border-box;
   padding: 0 24px;
   margin: 0;
