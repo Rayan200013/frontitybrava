@@ -28,7 +28,7 @@ const settings = {
       state: {
         source: {
           api: "https://frontity.bravastudio.net/wp-json",
-        
+          homepage: "/home",
         },
       },
     },
