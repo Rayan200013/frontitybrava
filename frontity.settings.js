@@ -27,7 +27,8 @@ const settings = {
       name: "@frontity/wp-source",
       state: {
         source: {
-          url: "https://frontity.bravastudio.net/",
+          api: "https://frontity.bravastudio.net/wp-json",
+        
         },
       },
     },

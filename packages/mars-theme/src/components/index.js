@@ -1,6 +1,6 @@
 import { Global, css, connect, styled, Head } from "frontity";
 import Switch from "@frontity/components/switch";
-// import Header from "../Header";
+
 import List from "./list";
 import Post from "./post";
 import Loading from "./loading";
@@ -49,6 +49,7 @@ const Theme = ({ state }) => {
           <PageError when={data.isError} />
         </Switch>
       </Main>
+
     </>
   );
 };
@@ -59,6 +60,8 @@ const globalStyles = css`
   body {
     margin: 0;
     padding: 0;
+  
+    align-items: center;
     box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
       "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
