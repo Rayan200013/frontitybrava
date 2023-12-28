@@ -44,7 +44,7 @@ const Theme = ({ state }) => {
       on the type of URL we are in. */}
       <Main>
         <Switch>
-          <Home when={data.isHome} />
+          {/* <Home when={data.isHome} /> */}
           <Loading when={data.isFetching} />
           <List when={data.isArchive} />
           <Post when={data.isPostType} />
@@ -61,7 +61,7 @@ const globalStyles = css`
   body {
     margin: 0;
     padding: 0;
-
+    width:100%;
     align-items: center;
     box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,

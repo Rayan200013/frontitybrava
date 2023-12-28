@@ -8,10 +8,10 @@ export const Main = styled.div`
 
  
    p{
-    color: green;
+    color: black;
   }
   .p1{
-    color: purple;
+    color: black;
   }
   .p2{
     color: black;
@@ -69,6 +69,20 @@ display:flex-1;
     display: flex-1;
     
   }
+  .wpcf7 input[type="text"],
+.wpcf7 input[type="email"],
+.wpcf7 textarea,
+
+{
+    background-color: #fff;
+    color: #000;
+    width: 50%;
+
+}
+.wpcf7 submit{
+  background-color:#458FF6;
+}
+
 `;
 export const HeadContainer = styled.div`
   display: flex;
