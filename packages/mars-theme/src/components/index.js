@@ -9,6 +9,7 @@ import PageError from "./page-error";
 import { Main, HeadContainer } from "./style";
 // import Header from "./Header";
 import Nav from "./Header";
+import Home from "./Home";
 
 /**
  * Theme is the root React component of our theme. The one we will export
@@ -43,13 +44,13 @@ const Theme = ({ state }) => {
       on the type of URL we are in. */}
       <Main>
         <Switch>
+          <Home when={data.isHome} />
           <Loading when={data.isFetching} />
           <List when={data.isArchive} />
           <Post when={data.isPostType} />
           <PageError when={data.isError} />
         </Switch>
       </Main>
-
     </>
   );
 };
@@ -60,7 +61,7 @@ const globalStyles = css`
   body {
     margin: 0;
     padding: 0;
-  
+
     align-items: center;
     box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
