@@ -5,7 +5,7 @@ export const Main = styled.div`
   justify-content: center;
   padding: 20px;
   width:1000px;
-  min-width:100%;
+
  
    p{
     color: green;
